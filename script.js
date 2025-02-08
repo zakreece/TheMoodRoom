@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const otherMoodContainer = document.getElementById('otherMoodContainer');
     const otherMoodInput = document.getElementById('otherMood');
     const calendarContainer = document.getElementById('calendarContainer');
-    const liveDateTimeEl = document.getElementById('liveDateTime');
-    const weatherDisplayEl = document.getElementById('weatherDisplay');
     const model = document.getElementById('model');
     const modelEntries = document.getElementById('modelEntries');
     const closeModel = document.getElementById('closeModel');
@@ -148,41 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       calendarContainer.innerHTML = calendarHTML;
     }
-  
-    function updateDateTime() {
-      const now = new Date();
-      const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric',
-                        hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      liveDateTimeEl.textContent = now.toLocaleDateString('en-GB', options);
-    }
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-  
-    function fetchWeather(latitude, longitude) {
-      const API_KEY = '9bb4e9f31773147f76f13013ab7f6054';
-      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const temp = Math.round(data.main.temp);
-          const weatherDescription = data.weather[0].main;
-          weatherDisplayEl.textContent = `Weather: ${weatherDescription}, ${temp}°C`;
-        })
-        .catch(err => { weatherDisplayEl.textContent = 'Weather data unavailable'; });
-    }
-  
-    function initWeather() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => fetchWeather(position.coords.latitude, position.coords.longitude),
-          () => fetchWeather(51.5074, -0.1278)
-        );
-      } else {
-        fetchWeather(51.5074, -0.1278);
-      }
-    }
-    initWeather();
-    setInterval(initWeather, 600000);
   
     calendarContainer.addEventListener('click', function(event) {
       const dayCell = event.target.closest('.day');

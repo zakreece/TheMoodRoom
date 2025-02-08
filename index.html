@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Mood Room</title>
+  <!-- Favicon -->
+  <link rel="icon" href="static/images/note-book.png" type="image/png">
+  <!-- Font Awesome (using your kit) -->
   <script src="https://kit.fontawesome.com/07ae5b75d2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -20,14 +23,14 @@
 
   <main>
     <section id="homeView" class="view active">
-      <h2>Mood Calendar</h2>
+      <h2>Mood Calendar:</h2>
       <div id="calendarContainer"></div>
       <h2>Recent Diary Entries</h2>
       <div id="entriesList"></div>
     </section>
 
     <section id="newEntryView" class="view">
-      <h2>Add a New Diary Entry</h2>
+      <h2>Add a New Diary Entry:</h2>
       <form id="entryForm">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" placeholder="Enter title" required>
@@ -64,7 +67,7 @@
     <div class="social-links">
       <a href="https://x.com/?lang=en" target="_blank" class="social twitter">
         <i class="fa-brands fa-x-twitter"></i>
-    </a>
+      </a>
       <a href="https://www.instagram.com/" target="_blank" class="social instagram">
         <i class="fa-brands fa-square-instagram"></i> 
       </a>
@@ -73,11 +76,6 @@
       </a>
     </div>
   </footer>
-
-  <div id="liveInfo">
-    <div id="liveDateTime"></div>
-    <div id="weatherDisplay"></div>
-  </div>
 
   <!-- Model for viewing diary entries by calendar day -->
   <div id="model" class="model">

@@ -1,5 +1,5 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* Google Fonts Import - Using Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
   --bg-color: #121212;
@@ -18,9 +18,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow-x: hidden;
 }
 
 header {
@@ -163,6 +164,7 @@ form button {
 }
 form button:hover { background-color: var(--accent-color); }
 
+/* Original Calendar Grid for larger screens */
 #calendarContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -195,19 +197,6 @@ form button:hover { background-color: var(--accent-color); }
 }
 #calendarContainer .day .date-number { font-weight: bold; }
 
-#liveInfo {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(0,0,0,0.7);
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 0.9em;
-  color: var(--text-color);
-  z-index: 1000;
-}
-#liveInfo > div { margin-bottom: 5px; }
-
 footer {
   background-color: var(--secondary-color);
   color: #888;
@@ -215,6 +204,7 @@ footer {
   padding: 15px;
   border-top: 1px solid #333;
   margin-top: 20px;
+  /* Removed fixed positioning so footer scrolls normally */
 }
 footer .social-links {
   margin-top: 10px;
@@ -263,3 +253,62 @@ footer .social-links a:hover {
   cursor: pointer;
 }
 .close:hover { color: var(--accent-color); }
+
+/* Media Queries for Smartphones & Tablets */
+@media (max-width: 600px) {
+  body {
+    padding: 0 5px;
+  }
+  header h1 {
+    font-size: 2em;
+  }
+  nav button {
+    font-size: 0.9em;
+    padding: 5px 8px;
+    margin: 0 5px;
+  }
+  main {
+    max-width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 20px; /* footer will scroll normally */
+  }
+  form, .model-content {
+    max-width: 100%;
+    padding: 15px;
+  }
+  /* Display calendar as a vertical list */
+  #calendarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  #calendarContainer .day {
+    width: 100%;
+    padding: 5px;
+    min-height: 40px;
+    font-size: 0.7em;
+    text-align: center;
+  }
+}
+
+/* Media Queries for Monitors (Large Screens) */
+@media (min-width: 1200px) {
+  main {
+    max-width: 1200px;
+  }
+  header h1 {
+    font-size: 3em;
+  }
+  nav button {
+    font-size: 1.2em;
+    padding: 8px 15px;
+  }
+  form, .model-content {
+    max-width: 800px;
+  }
+  #calendarContainer {
+    gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    display: grid;
+  }
+}
