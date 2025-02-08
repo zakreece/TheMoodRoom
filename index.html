@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mood Room</title>
+  <script src="https://kit.fontawesome.com/07ae5b75d2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>The Mood Room</h1>
+    <nav>
+      <button id="homeBtn">Home</button>
+      <button id="newEntryBtn">New Entry</button>
+    </nav>
+  </header>
+
+  <div id="flashMessages"></div>
+
+  <main>
+    <section id="homeView" class="view active">
+      <h2>Mood Calendar</h2>
+      <div id="calendarContainer"></div>
+      <h2>Recent Diary Entries</h2>
+      <div id="entriesList"></div>
+    </section>
+
+    <section id="newEntryView" class="view">
+      <h2>Add a New Diary Entry</h2>
+      <form id="entryForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter title" required>
+
+        <label for="mood">Mood:</label>
+        <select id="mood" name="mood" required>
+          <option value="" disabled selected>Select your mood</option>
+          <option value="Happy">Happy</option>
+          <option value="Sad">Sad</option>
+          <option value="Excited">Excited</option>
+          <option value="Angry">Angry</option>
+          <option value="Calm">Calm</option>
+          <option value="Stressed">Stressed</option>
+          <option value="Content">Content</option>
+          <option value="Anxious">Anxious</option>
+          <option value="Bored">Bored</option>
+          <option value="Other">Other</option>
+        </select>
+        <div id="otherMoodContainer" style="display:none;">
+          <label for="otherMood">Please specify your mood:</label>
+          <input type="text" id="otherMood" name="otherMood" placeholder="Enter custom mood">
+        </div>
+
+        <label for="content">Diary Entry:</label>
+        <textarea id="content" name="content" rows="8" placeholder="Write your diary entry here..." required></textarea>
+
+        <button type="submit">Submit Entry</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Mood Room. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://x.com/?lang=en" target="_blank" class="social twitter">
+        <i class="fa-brands fa-x-twitter"></i>
+    </a>
+      <a href="https://www.instagram.com/" target="_blank" class="social instagram">
+        <i class="fa-brands fa-square-instagram"></i> 
+      </a>
+      <a href="https://www.facebook.com/?locale=en_GB" target="_blank" class="social facebook">
+        <i class="fa-brands fa-square-facebook"></i> 
+      </a>
+    </div>
+  </footer>
+
+  <div id="liveInfo">
+    <div id="liveDateTime"></div>
+    <div id="weatherDisplay"></div>
+  </div>
+
+  <!-- Model for viewing diary entries by calendar day -->
+  <div id="model" class="model">
+    <div class="model-content">
+      <span id="closeModel" class="close">&times;</span>
+      <div id="modelEntries"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
